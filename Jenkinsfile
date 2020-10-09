@@ -7,7 +7,7 @@ pipeline {
   environment {
     SAUCE_USERNAME = credentials('sauce-username')
     SAUCE_ACCESS_KEY = credentials('sauce-access-key')
-    CI = true //this is fucking stupid
+    CI = true
   }
   stages {
     stage('run') {
