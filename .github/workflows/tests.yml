@@ -16,7 +16,6 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: golang:1.14-alpine
-
     steps:
       - name: Install Dependencies
         run: apk add --no-cache git gcc g++ curl
