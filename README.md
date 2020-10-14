@@ -1,2 +1,2 @@
-# jenkins-devx-example
-Demonstration of using testrunner-toolkit / saucectl in a Jenkins pipeline.
+# devx-ci-examples
+Demonstration of using testrunner-toolkit / saucectl in a Jenkins pipeline and GitHub Actions.
