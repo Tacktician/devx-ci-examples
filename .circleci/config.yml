@@ -9,11 +9,29 @@ jobs:
       - run:
           name: Install Dependencies
           command: npm install
-      - run:
-          name: Build Project
-          command: |
-            npm run build
       - persist_to_workspace:
           root: ~/app
           paths:
             - .
+  test-testcafe:
+    working_directory: ~/app
+    docker:
+      - image: saucelabs/stt-testcafe-node:latest
+    steps:
+      - attach_workspace:
+          at: ~/app
+      - run:
+          name: Testcafe Tests
+          command: |
+            saucectl run -c ./.sauce/testcafe.yml
+          environment:
+            BUILD_ID: $CIRCLE_BUILD_NUM
+            BUILD_ENV: CircleCI
+workflows:
+  version: 2
+  default_workflow:
+    jobs:
+      - setup
+      - test-testcafe:
+          requires:
+            - setup
