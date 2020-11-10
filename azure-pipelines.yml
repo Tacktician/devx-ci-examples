@@ -5,7 +5,7 @@ jobs:
   - job: testrunnerToolkit
     variables:
       SAUCE_ACCESS_KEY: $(SAUCE_ACCESS_KEY)
-      SAUCE_USERNAME: ${SAUCE_USERNAME}
+      SAUCE_USERNAME: $(SAUCE_USERNAME)
       CI: true
     pool:
       vmImage: 'ubuntu-latest'
