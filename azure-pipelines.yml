@@ -7,13 +7,14 @@ trigger:
 - master
 
 jobs:
-  - job: Run Testrunner Toolkit
+  - job: testrunnerToolkit
     variables:
-      SAUCE_ACCESS_KEY:
-      SAUCE_USERNAME:
+      SAUCE_ACCESS_KEY: $(SAUCE_ACCESS_KEY)
+      SAUCE_USERNAME: ${SAUCE_USERNAME}
       CI: true
     pool:
       vmImage: 'ubuntu-latest'
+    container: saucelabs/stt-puppeteer-jest-node:latest
     
     steps:
     - checkout: self
@@ -22,4 +23,6 @@ jobs:
       inputs:
         versionSpec: 12.x
     - script: npm install
-      displayName: Install node dependencies
+      displayName: 'Install node dependencies'
+    - script: saucectl run -c ./.sauce/puppeteer.yml
+      displayName: 'Run Testrunner Toolkit'
