@@ -9,21 +9,35 @@ jobs:
       - run:
           name: Install Dependencies
           command: npm install
+      - run:
+          name: Build Project
+          command: |
+            npm run build
       - persist_to_workspace:
           root: ~/app
           paths:
             - .
-  test-testcafe:
+  test-cypress:
     working_directory: ~/app
     docker:
-      - image: saucelabs/stt-testcafe-node:latest
+      - image: circleci/node:10.12
     steps:
       - attach_workspace:
           at: ~/app
       - run:
-          name: Testcafe Tests
+          name: Download Saucectl
           command: |
-            saucectl run -c ./.sauce/testcafe.yml
+            curl -L -o ${SAUCECTL_BINARY} \
+            -H "Accept: application/octet-stream" \
+            https://github.com/saucelabs/saucectl/releases/download/v${SAUCECTL_VERSION}/${SAUCECTL_BINARY} \
+            && tar -xvzf ${SAUCECTL_BINARY}'
+          environment:
+            SAUCECTL_VERSION: 0.19.0
+            SAUCECTL_BINARY: saucectl_${SAUCECTL_VERSION}_linux_64-bit.tar.gz
+      - run:
+          name: Cypress Tests
+          command: |
+            saucectl run -c ./.sauce/cypress.yml
           environment:
             BUILD_ID: $CIRCLE_BUILD_NUM
             BUILD_ENV: CircleCI
@@ -32,6 +46,6 @@ workflows:
   default_workflow:
     jobs:
       - setup
-      - test-testcafe:
+      - test-cypress:
           requires:
             - setup
