@@ -26,7 +26,7 @@ pipeline {
     stage('run') {
       steps {
         // This step triggers the tests
-        sh './saucectl run -c ./.sauce/cypress.yml --verbose'
+        sh './saucectl run -c ./.sauce/puppeteer.yml --verbose'
       }
     }
   }
