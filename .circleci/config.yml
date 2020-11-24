@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  setup:
+  test-cypress:
     working_directory: ~/app
     docker:
       - image: circleci/node:10.12
@@ -13,17 +13,6 @@ jobs:
           name: Build Project
           command: |
             npm run build
-      - persist_to_workspace:
-          root: ~/app
-          paths:
-            - .
-  test-cypress:
-    working_directory: ~/app
-    docker:
-      - image: circleci/node:10.12
-    steps:
-      - attach_workspace:
-          at: ~/app
       - run:
           name: Download Saucectl
           command: |
@@ -45,7 +34,4 @@ workflows:
   version: 2
   default_workflow:
     jobs:
-      - setup
-      - test-cypress:
-          requires:
-            - setup
+      - test-cypress
