@@ -23,7 +23,7 @@ jobs:
       - run:
           name: Workaround for Container Permissions
           command: |
-            sudo chmod -R 777 tests/
+            chmod -R 777 tests/
       - run:
           name: Run Sauce Pipeline Tests
           command: |
