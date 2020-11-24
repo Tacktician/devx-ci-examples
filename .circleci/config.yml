@@ -6,21 +6,21 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - v1-npm-deps-{{ checksum "package-lock.json" }}
-            - v1-npm-deps-
-      - run:
-          name: Install Dependencies
-          command: npm install
-      - run:
-          name: Build Project
-          command: |
-            npm run build
-      - save_cache:
-          paths:
-            - ./node_modules
-          key: v1-npm-deps-{{ checksum "package-lock.json" }}
+#      - restore_cache:
+#          keys:
+#            - v1-npm-deps-{{ checksum "package.json" }}
+#            - v1-npm-deps-
+#      - run:
+#          name: Install Dependencies
+#          command: npm install
+#      - run:
+#          name: Build Project
+#          command: |
+#            npm run build
+#      - save_cache:
+#          paths:
+#            - ./node_modules
+#          key: v1-npm-deps-{{ checksum "package.json" }}
       - run:
           name: Download Saucectl
           command: |
