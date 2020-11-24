@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   test-cypress:
     docker:
-      - image: circleci/node:10.12
+      - image: ubuntu:latest
     working_directory: ~/repo
     steps:
       - checkout
@@ -23,7 +23,7 @@ jobs:
       - run:
           name: Workaround for Container Permissions
           command: |
-            chmod -R 777 tests/
+            sudo chmod -R 777 tests/
       - run:
           name: Run Sauce Pipeline Tests
           command: |
