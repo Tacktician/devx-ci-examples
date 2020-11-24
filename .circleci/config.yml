@@ -17,6 +17,8 @@ jobs:
           name: Build Project
           command: |
             npm run build
+      - save_cache:
+          key: v1-dependencies-{{ checksum "package.json" }}
       - run:
           name: Download Saucectl
           command: |
