@@ -4,6 +4,9 @@ jobs:
     docker:
       - image: circleci/node:10.12
     working_directory: ~/repo
+    environment:
+      SAUCECTL_VERSION: 0.19.0
+      SAUCECTL_BINARY: saucectl_${SAUCECTL_VERSION}_linux_64-bit.tar.gz
     steps:
       - checkout
 #      - restore_cache:
@@ -28,9 +31,6 @@ jobs:
             -H "Accept: application/octet-stream" \
             https://github.com/saucelabs/saucectl/releases/download/v${SAUCECTL_VERSION}/${SAUCECTL_BINARY} \
             && tar -xvzf ${SAUCECTL_BINARY}
-          environment:
-            SAUCECTL_VERSION: 0.19.0
-            SAUCECTL_BINARY: saucectl_${SAUCECTL_VERSION}_linux_64-bit.tar.gz
       - run:
           name: Cypress Tests
           command: |
