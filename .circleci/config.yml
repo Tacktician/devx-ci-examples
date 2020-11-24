@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   test-cypress:
     docker:
-      - image: ubuntu:latest
+      - image: ubuntu:xenial
     working_directory: ~/repo
     steps:
       - checkout
