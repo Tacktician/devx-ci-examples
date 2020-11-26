@@ -1,5 +1,5 @@
 # runs parallel cypress tests with Testrunner Toolkit
-name: Sauce Pipeline Browser Tests
+name: STT Cypress Parallel
 
 on:
   pull_request:
