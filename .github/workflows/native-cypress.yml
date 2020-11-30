@@ -1,4 +1,4 @@
-name: STT Cypress Parallel
+name: Sauce Pipeline Tests
 on:
   pull_request:
   push:
@@ -23,7 +23,7 @@ jobs:
               https://github.com/saucelabs/saucectl/releases/download/v${SAUCECTL_VERSION}/${SAUCECTL_BINARY} \
               && tar -xvzf ${SAUCECTL_BINARY}
       - name: Workaround for container permissions
-        run: sudo chmod -R 777 tests/
+        run: sudo chmod -R 777 cypress/
       - name: Run Sauce Pipeline Test
         run: |
           ./saucectl run -c .sauce/cypress.yml
