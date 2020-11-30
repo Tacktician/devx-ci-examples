@@ -1,6 +1,1 @@
-{
-  "integrationFolder": "./tests/",
-  "testFiles": "*.test.js",
-  "viewportWidth": 1680,
-  "viewportHeight": 864
-}
+{}
