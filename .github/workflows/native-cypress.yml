@@ -26,4 +26,4 @@ jobs:
         run: sudo chmod -R 777 tests/
       - name: Run Sauce Pipeline Test
         run: |
-          ./saucectl run -c ./.sauce/cypress.yml
+          ./saucectl run -c .sauce/cypress.yml
