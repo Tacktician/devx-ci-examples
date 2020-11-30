@@ -24,7 +24,7 @@ jobs:
 
       - name: Run Sauce Pipeline Test
         run: |
-          saucectl run -c .sauce/cypress_parallel.yml --verbose
+          ./saucectl run -c .sauce/cypress_parallel.yml --verbose
         env:
           BUILD_ID: ${{ github.run_id }}
           BUILD_ENV: Github Actions
@@ -41,7 +41,7 @@ jobs:
 
       - name: Run Sauce Pipeline Test
         run: |
-          saucectl run -c ./.sauce/cypress_parallel.yml --verbose
+          ./saucectl run -c .sauce/cypress_parallel.yml --verbose
         env:
           BUILD_ID: ${{ github.run_id }}
           BUILD_ENV: Github Actions
