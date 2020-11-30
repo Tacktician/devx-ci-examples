@@ -15,12 +15,18 @@ jobs:
   cypress-parallel-1:
     runs-on: ubuntu-latest
     container:
-      image: saucelabs/stt-cypress-mocha-node:v0.2.0
+      image: saucelabs/stt-cypress-mocha-node:v0.1.11
       options: --user 1001
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v1
+
+      - name: Workaround for container permissions
+        run: sudo chown -R $USER:$(id -gn $USER) /github/home
+
+      - name: Workaround for container folder
+        run: sudo ln -s /home/seluser/.cache /github/home/.cache
 
       - name: Run Sauce Pipeline Test
         run: |
@@ -32,12 +38,18 @@ jobs:
   cypress-parallel-2:
     runs-on: ubuntu-latest
     container:
-      image: saucelabs/stt-cypress-mocha-node:v0.2.0
+      image: saucelabs/stt-cypress-mocha-node:v0.11.0
       options: --user 1001
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v1
+
+      - name: Workaround for container permissions
+        run: sudo chown -R $USER:$(id -gn $USER) /github/home
+
+      - name: Workaround for container folder
+        run: sudo ln -s /home/seluser/.cache /github/home/.cache
 
       - name: Run Sauce Pipeline Test
         run: |
