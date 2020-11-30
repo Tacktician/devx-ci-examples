@@ -13,7 +13,7 @@ pipeline {
     stage('run') {
       steps {
         // This step trigger the tests
-        sh 'saucectl run -c ./.sauce/config.yml --verbose'
+        sh 'saucectl run -c ./.sauce/puppeteer.yml --verbose'
       }
     }
   }
