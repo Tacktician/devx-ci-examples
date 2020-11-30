@@ -1,4 +1,4 @@
-name: Sauce Pipeline Tests
+name: Sauce Cypress Tests
 on:
   pull_request:
   push:

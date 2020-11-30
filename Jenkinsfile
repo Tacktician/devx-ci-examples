@@ -10,7 +10,7 @@ pipeline {
     CI = true
   }
   stages {
-    stage('run') {
+    stage('Run Saucectl Puppeteer Tests') {
       steps {
         // This step trigger the tests
         sh 'saucectl run -c ./.sauce/puppeteer.yml --verbose'
