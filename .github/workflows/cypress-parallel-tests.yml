@@ -15,7 +15,7 @@ jobs:
   cypress-parallel-1:
     runs-on: ubuntu-latest
     container:
-      image: saucelabs/stt-cypress-mocha-node
+      image: saucelabs/stt-cypress-mocha-node:v0.2.0
       options: --user 1001
 
     steps:
@@ -32,7 +32,7 @@ jobs:
   cypress-parallel-2:
     runs-on: ubuntu-latest
     container:
-      image: saucelabs/stt-cypress-mocha-node
+      image: saucelabs/stt-cypress-mocha-node:v0.2.0
       options: --user 1001
 
     steps:
