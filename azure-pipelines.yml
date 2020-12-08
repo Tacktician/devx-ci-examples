@@ -2,20 +2,20 @@ trigger:
   - master
 
 jobs:
-  - job: testrunnerToolkit
+  - job: testrunnerToolkit_puppeteer
     variables:
       CI: true
     pool:
       vmImage: 'ubuntu-latest'
-    container: saucelabs/stt-puppeteer-jest-node:v0.20
+    container: saucelabs/stt-puppeteer-jest-node:v0.1.8
 
     steps:
       - checkout: self
         displayName: 'Checkout Code'
       - script: sudo chown -R $USER:$(id -gn $USER) /github/home
-        name: Workaround for container permissions
+        displayName: 'Workaround for container permissions'
       - script: sudo ln -s /home/seluser/.cache /github/home/.cache
-        name: Workaround for container folder
+        displayName: 'Workaround for container folder'
       - task: NodeTool@0
         inputs:
           versionSpec: 12.x
