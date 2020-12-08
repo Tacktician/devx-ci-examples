@@ -1,2 +1,7 @@
-# devx-ci-examples
-Demonstration of using testrunner-toolkit / saucectl in a Jenkins pipeline and GitHub Actions.
+# Testrunner Toolkit CI Examples
+Demonstration of using [testrunner-toolkit](https://opensource.saucelabs.com/testrunner-toolkit/docs/overview.html) in:
+
+* Jenkins pipeline 
+* Azure Pipeline
+* CircleCI
+* GitHub Actions
