@@ -10,12 +10,10 @@ sauce:
       - release team
       - other tag
     build: Release $CI_COMMIT_SHORT_SHA
-docker:
-  image:
-    name: saucelabs/stt-cypress-mocha-node
-    tag: v0.2.0
 cypress:
   configFile: "tests/cypress.json"  # We determine related files based on the location of the config file.
+  projectpath: "tests"
+  envfile: ""
 suites:
   - name: "saucy test"
     browser: "chrome"
@@ -23,3 +21,8 @@ suites:
       env:
         hello: world
       testFiles: [ "**/*.*" ] # Cypress native glob support.
+docker:
+  fileTransfer: mount
+  image:
+    name: saucelabs/stt-cypress-mocha-node
+    tag: v0.2.3
